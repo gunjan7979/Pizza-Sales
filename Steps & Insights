@@ -1,0 +1,94 @@
+I am excited to share a recent project I completed on Pizza Sales using SQL and Power BI. 📶 
+
+𝐏𝐫𝐨𝐣𝐞𝐜𝐭 𝐎𝐛𝐣𝐞𝐜𝐭𝐢𝐯𝐞: To develop a comprehensive set of queries and dashboard that provides real-time insights into key performance metrics and trends, enabling stakeholders to monitor and analyze store sales effectively.
+
+
+
+Steps Performed:
+
+Importing data from csv files to SQL database.
+
+Wrote SQL queries for different questions asked from different stakeholders.
+
+Made Power BI Dashboard to have dynamic view of the data.
+
+
+
+PDF of SQL Questions and Answers shared.
+
+Dax Query used in Power Bi:
+
+1. Date = LOOKUPVALUE(orders[date],orders[order_id],order_details[order_id])
+
+2. Current_Day_orders = CALCULATE(
+
+    DISTINCTCOUNT(order_details[order_id]),
+
+    FILTER(
+
+        All(order_details),order_details[Date] = max(order_details[Date])))
+
+3. Current_Day_Revenue = CALCULATE(
+
+    Sum(order_details[Revenue]),
+
+    FILTER(
+
+        All(order_details),order_details[Date] = max(order_details[Date])))
+
+4. Revenue = order_details[PRICE1]*order_details[quantity]
+
+5. Previous_Day_orders = CALCULATE(
+
+    DISTINCTCOUNT(order_details[order_id]),
+
+    FILTER(
+
+        All(order_details),order_details[Date] = max(order_details[Date])-1))
+
+6. Previous_Day_Revenue = CALCULATE(
+
+    Sum(order_details[Revenue]),
+
+    FILTER(
+
+        All(order_details),order_details[Date] = max(order_details[Date])-1))
+
+7. PRICE1 = LOOKUPVALUE(pizzas[price],pizzas[pizza_id],order_details[pizza_id])
+
+8. Size1 = LOOKUPVALUE(pizzas[size],pizzas[pizza_id],order_details[pizza_id])
+
+9. pizza_type = LOOKUPVALUE(pizzas[pizza_type_id],pizzas[pizza_id],order_details[pizza_id])
+
+10. Pizza_name = LOOKUPVALUE(pizza_types[name],pizza_types[pizza_type_id],order_details[pizza_type])
+
+
+
+Data Insights:
+
+1. Total number of Orders are 21.4K  and Revenue is $817.9K in an year.
+
+2. Quarter3 (July, August & September) has the highest order count i.e., 5.44k.
+
+3. Quarter4 (October, November & December) has the lowest order count i.e., 5.12k.
+
+4. Quarter2 (April, May & June) has the highest revenue i.e., $208.4k.
+
+5. Quarter4 (October, November & December) has the lowest revenue i.e., $199.1k.
+
+6. Highest Orders and Revenue came in the month of July i.e., 1.9k and $72.6k.
+
+7. Lowest Orders and Revenue came in the month of October i.e., 1.9k and $72.6k.
+
+8. A dip in Revenue can be seen in three months which are February, September and October.
+
+9. Highest Selling Pizza is Large Sized Pizza, followed by Medium and Small.
+
+10. Top 5 highest Ordered Pizzas are Classic Deluxe, Barbeque Chicken, Hawaiian, Pepperoni and Thai Chicken.
+
+11. Top 5 highest Revenue giving Pizzas are Thai Chicken, Barbeque, Classic Deluxe, Hawaiian and Pepperoni.
+
+12. All these insights can be seen on quarterly and monthly level as well by just using the slicer and month name on graph. 
+
+
+LinkedIn Link : www.linkedin.com/in/gunjan-walia-125202140
